@@ -42,6 +42,7 @@ function getEmployee() {
 <html>
     <head>
         <title>Team Project: Bestbuy Store</title>
+        <link rel="stylesheet" href="./css/stylesheet.css" type="text/css">
         
     </head>
 </html>

@@ -22,8 +22,15 @@ session_start();
 
 ?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Cart</title>
+        <link rel="stylesheet" href="./css/stylesheet.css" type="text/css"> 
+    </head>
 
 <br />
 <form>
 <input type="submit" value="Check Out" />
 </form>
+</html>
