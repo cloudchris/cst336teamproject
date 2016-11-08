@@ -3,6 +3,10 @@ session_start();
 include '../../includes/dbConnection.php';
 $conn = getDatabaseConnection("bestbuy");
 
+ if($conn->connect_error){
+        die("Connection to database failed: " . $conn->connect_error);
+    }
+
 function listProducts() {
     global $conn;
     $sql = "SELECT productName, type, price
