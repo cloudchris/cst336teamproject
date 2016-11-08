@@ -31,7 +31,16 @@ function getProdByDept(){
     
 }
 
-function getEmployee() {
+function getEmployee() { //getting a list of employees by department
+    global $conn;
+    $sql = "SELECT lastName, firstName, deptName 
+    FROM employees e
+    LEFT JOIN department d ON e.deptId=d.deptName"; //want to show department name, but using department ID to join.
+    
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+    $products = $statement->fetch(PDO::FETCH_ASSOC);
+    
     
 }
 
