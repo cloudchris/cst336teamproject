@@ -11,26 +11,32 @@ function listProducts() {
     global $conn;
     $sql = "SELECT productName, type, price
             FROM products";
-    if(!empty($_GET['productName'])){
-                    //name has been selected
-                    
-                    $sql = $sql . " AND productName = :productName";
-                    
-                    $namedParameters[':productName'] = $_GET['productName'];
-                }
-    
-    if(isset($_GET['inputForm'])) {
-        if($_GET['orderBy'] == "nameASC") {
-            $sql .= " ORDER BY productName ASC";
-        } else if($_GET['orderBy'] == "nameDSC") {
-            $sql .= " ORDER BY productName DESC";
-        } else if($_GET['orderBy'] == "priceLow") {
-            $sql .= " ORDER BY price ASC";
-        } else if($_GET['orderBy'] == "priceHigh") {
-            $sql .= " ORDER BY price DESC";
+            
+    if (isset($_GET['submit'])){
+            //form has been submitted
+
+        $namedParameters = array();    
+        
+        if(!empty($_GET['productName'])){
+                        //name has been selected
+                        
+                        $sql = $sql . " AND productName = :productName";
+                        
+                        $namedParameters[':productName'] = $_GET['productName'];
+                    }
+        
+        if(isset($_GET['inputForm'])) {
+            if($_GET['orderBy'] == "nameASC") {
+                $sql .= " ORDER BY productName ASC";
+            } else if($_GET['orderBy'] == "nameDSC") {
+                $sql .= " ORDER BY productName DESC";
+            } else if($_GET['orderBy'] == "priceLow") {
+                $sql .= " ORDER BY price ASC";
+            } else if($_GET['orderBy'] == "priceHigh") {
+                $sql .= " ORDER BY price DESC";
+            }
         }
     }
-        
             
     $statement = $conn->prepare($sql);
     $statement->execute();
@@ -98,13 +104,15 @@ function getEmployee() {
 <!DOCTYPE html>
 <html>
     <head>
+         <style><link rel="stylesheet" href="./css/stylesheet.css" type="text/css"> </style>
         <title>Team Project: Bestbuy Store</title>
         
     </head>
     <body>
         <main>
             <h1>Welcome to Bestbuy!</h1>
-            <form>
+            <form method="POST">
+                
                 <h2><strong>Sort Products By: </strong></h2>
                     <select name="orderBy">
                         <option value="nameASC">Product(A-Z)</option>
@@ -123,7 +131,9 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="games" id="Games"/><label for="Game">Video Games</label>
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
-            
+                
+                <input type="submit" name ="submit" value="Search"/>
+             
              <?=listProducts()?>
              <?=getDepartments()?>
              <?=getEmployees()?>
