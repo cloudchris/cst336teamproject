@@ -30,10 +30,18 @@ function listProducts() {
                 $sql .= " AND type = 'Cell Phone'  ";
             } else if($_GET['filterType'] == "Audio") {
                 $sql .= " AND type = 'Audio'";
-            } else if($_GET['filterType'] == "priceLow") {
-                $sql .= " ORDER BY price ASC";
-            } else if($_GET['filterType'] == "priceHigh") {
-                $sql .= " ORDER BY type DESC";
+            } else if($_GET['filterType'] == "cameras") {
+                $sql .= " AND type = 'camera'";
+            } else if($_GET['filterType'] == "Computers") {
+                $sql .= " AND type = 'Computers'";
+            } else if($_GET['filterType'] == "Mus&Mov") {
+                $sql .= " AND type = 'Mus&Mov'";
+            } else if($_GET['filterType'] == "games") {
+                $sql .= " AND type = 'Game'";
+            } else if($_GET['filterType'] == "Appliances") {
+                $sql .= " AND type = 'Applicance'";
+            } else if($_GET['filterType'] == "health&fit") {
+                $sql .= " AND type = 'health&fit'";
             }
             
                 
@@ -54,32 +62,19 @@ function listProducts() {
      $statement->execute($namedParameters); //Always pass the named parameters, if any
      $records = $statement->fetchALL(PDO::FETCH_ASSOC);
    
-    echo "<div><table>";
     
     foreach($records as $product) {
-        echo"<tr>"
         echo "<input type='checkbox' name='cart[]'    value =" . $product['productId'] . ">";
-        echo "<td>" . $product['productName'] . " </td> <td> " . $product['type'] . "</td> <td> " . "$" . $product['price'] . "</td> ";
+        echo $product['productName'] . " " . $product['type'] . " " . "$" . $product['price'];
         echo "<a href='description.php?productId=".$product['productId']."'>";
         echo ' <button type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Description
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Description
             </button> ';
         echo "</a>";
         echo "<br />";
         echo "[Add to Cart] <br/>";
-
-        echo"</tr>";
+       
     }
-    echo"</table></div>";
-   // return $products;
-    
-      
-     // echo 'input type="submit" name="loginForm"'; //may need the < > still??
-
-        
-    }
-    
-
 }
 
 
@@ -98,8 +93,6 @@ function getDepartments() {
     }
     return $dept;
        
-=======
->>>>>>> 3d4b19ff48cd9ea4506f6f29f673adbda2ca6837
 }
 
 function getProdByDept(){
@@ -154,18 +147,18 @@ function getEmployee() {
         <main>
             <h1>Welcome to Bestbuy!</h1>
             
-<<<<<<< HEAD
+
             <form method="GET">
                 
                 <input type="text" name ="productName" placeholder ="Product Name"/>
-=======
+
             <ul class= "nav">
                 <li><a href = "https://trello.com/b/4eWjt4ip/group-project" target ="_blank">Trello</a></li>
                 <li><a href = "https://drive.google.com/a/csumb.edu/file/d/0B81v7LNzvA74NzM2b1MtdVdoMU0/view?usp=sharing" target = "_blank">Mockup and Schema</a></li>
             </ul>
             
             <form method="POST">
->>>>>>> 3d4b19ff48cd9ea4506f6f29f673adbda2ca6837
+
                 
 
                 <h3><strong>Sort Products By: </strong></h3>
@@ -186,7 +179,7 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="games" id="Games"/><label for="Game">Video Games</label>
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
-<<<<<<< HEAD
+
                  <br />
                   <input type="submit" name ="search" value="Search"/><br/>
 
@@ -199,15 +192,13 @@ function getEmployee() {
                 echo "<td>" . $product['productName'] . " </td> <td> " . "$" . $product['price'] . "</td> ";
                 echo "[Add to Cart] <br/>";
             ?>
-=======
+
                   <input type="submit" name ="submit" value="Search"/><br/>
 
             </form>
                 <div class="container"><?=listProducts()?></div><p>
                  <?=getProdByDept()?><p> <!--is repeating product list-->
                  <?=getEmployee()?>
-              
->>>>>>> 3d4b19ff48cd9ea4506f6f29f673adbda2ca6837
 
 
         </main>
