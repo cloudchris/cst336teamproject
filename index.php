@@ -42,32 +42,18 @@ function listProducts() {
       $statement->execute($namedParameters); //Always pass the named parameters, if any
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);
    
+    echo "<table>";
     foreach($records as $product) {
-        echo $product
-        ['productName'] . " - ". $product['type'] .  " - ". $product['price'] . "<br/> ";
+        echo $product;
+        echo"<tr>";
+        echo "<td>" . $product['productName'] . " </td> <td> " . "$" . $product['price'] . "</td> ";
+        echo"<tr>";
     }
-   
+    echo"<table>";
     return $products;
     
       
       echo 'input type="submit" name="loginForm"'; //may need the < > still??
-}
-
-function getDepartments() {
-    global $conn;
-    $sql = "SELECT deptName
-            FROM department
-            ORDER BY deptName";
-    
-   $statement= $conn->prepare($sql); 
-      $statement->execute();
-      $records = $statement->fetchALL(PDO::FETCH_ASSOC);
-    
-    foreach($records as $dept) {
-        echo $dept['deptName'] . "<br/> ";
-    }
-    return $dept;
-       
 }
 
 function getProdByDept(){
@@ -139,13 +125,11 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="games" id="Games"/><label for="Game">Video Games</label>
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
-                 <br />
                   <input type="submit" name ="submit" value="Search"/><br/>
 
             </form>
                      
                  <?=listProducts()?>
-                 <?=getDepartments()?>
                  <?=getEmployee()?>
                  <?=getProdByDept()?>
               
