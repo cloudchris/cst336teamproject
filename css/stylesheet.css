@@ -1,0 +1,24 @@
+main {
+    text-align:center;
+    margin:auto;
+}
+
+h1 {
+    text-align:center;
+}
+
+body {
+    margin:auto;
+    background:gradient, grey, dark grey;
+    background-color:grey;
+    text-align:center;
+    color:#1a4332;
+    font-family:Tahoma;
+    
+}
+
+.labels{
+    color:#1a4367;
+    font-family:Tahoma;
+    
+}
