@@ -104,7 +104,7 @@ function getEmployee() {
 <!DOCTYPE html>
 <html>
     <head>
-         <style><link rel="stylesheet" href="./css/stylesheet.css" type="text/css"> </style>
+         <link rel="stylesheet" href="./css/stylesheet.css" type="text/css">
         <title>Team Project: Bestbuy Store</title>
         
     </head>
