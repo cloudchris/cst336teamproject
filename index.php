@@ -143,7 +143,7 @@ function getEmployee() {
              
              <?=listProducts()?>
              <?=getDepartments()?>
-             <?=getEmployees()?>
+             <?=getEmployee()?>
 
         </main>
     </body>
