@@ -62,11 +62,11 @@ function getDepartments() {
             FROM department
             ORDER BY deptName";
     
-    $statement = $conn->prepare($sql);
-    $statement->execute();
-    $depts = $statement->fetch(PDO::FETCH_ASSOC);
+   $statement= $dbConn->prepare($sql); 
+      $statement->execute();
+      $records = $statement->fetchALL(PDO::FETCH_ASSOC);
     
-    foreach($depts as $dept) {
+    foreach($records as $dept) {
         echo $dept['deptName'] . "<br/> ";
     }
     return $dept;
@@ -80,12 +80,12 @@ function getProdByDept(){
             JOIN department b ON a.deptId = b.deptId
             ORDER BY deptName";
     
-    $statement = $conn->prepare($sql);
-    $statement->execute();
-    $prodByDept = $statement->fetch(PDO::FETCH_ASSOC);            
+    $statement= $dbConn->prepare($sql); 
+      $statement->execute();
+      $records = $statement->fetchALL(PDO::FETCH_ASSOC);            
 
-    foreach($prodByDept as $prod) {
-        echo $prod['productName'] . " - ". $record['type'] .  " - ". $record['deptName'] . "<br/> ";
+    foreach($records as $prod) {
+        echo $prod['productName'] . " - ". $prod['type'] .  " - ". $prod['deptName'] . "<br/> ";
     }
 
     return $prodByDept;
@@ -97,9 +97,9 @@ function getEmployee() {
     FROM employees e
     LEFT JOIN department d ON e.deptId=d.deptId"; 
     
-    $statement = $conn->prepare($sql);
-    $statement->execute();
-    $employees = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement= $dbConn->prepare($sql); 
+      $statement->execute();
+      $records = $statement->fetchALL(PDO::FETCH_ASSOC);
     
     print_r($employees);
     return $employees;
@@ -138,7 +138,7 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="games" id="Games"/><label for="Game">Video Games</label>
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
-                
+                    <?=getProdByDept()?>
                 <input type="submit" name ="submit" value="Search"/><br/>
              
              <?=listProducts()?>
