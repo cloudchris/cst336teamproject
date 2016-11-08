@@ -46,6 +46,8 @@ function listProducts() {
     foreach($records as $product) {
         echo"<tr>";
         echo "<td>" . $product['productName'] . " </td> <td> " . "$" . $product['price'] . "</td> ";
+        echo "[Add to Cart] <br/>";
+
         echo"<tr>";
     }
     echo"</table></div>";
