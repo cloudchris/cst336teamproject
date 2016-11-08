@@ -17,6 +17,13 @@ function listProducts() {
     $statement->execute();
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $products;
+    
+    foreach($products as $record) {
+          echo "<input type='checkbox' name='cart[]'    value =" . $record['productName'] . ">";
+          echo $record['productName'] . "<br/> ";
+      }
+      
+      echo 'input type="submit" name="loginForm"'; //may need the < > still??
 }
 
 function getDepartments() {
