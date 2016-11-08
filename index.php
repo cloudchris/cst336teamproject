@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../includes/dbConn.php';
+include '../../includes/dbConnection.php';
 $conn = getDatabaseConnection("bestbuy");
 
 if($conn->connect_error){
@@ -43,10 +43,17 @@ function listProducts() {
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
    
     foreach($products as $product) {
-        echo $prod['productName'] . " - ". $record['type'] .  " - ". $record['price'] . "<br/> ";
+        echo $product['productName'] . " - ". $product['type'] .  " - ". $product['price'] . "<br/> ";
     }
    
     return $products;
+    
+    foreach($products as $record) {
+          echo "<input type='checkbox' name='cart[]'    value =" . $record['productName'] . ">";
+          echo $record['productName'] . "<br/> ";
+      }
+      
+      echo 'input type="submit" name="loginForm"'; //may need the < > still??
 }
 
 function getDepartments() {
@@ -132,11 +139,11 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
                 
-                <input type="submit" name ="submit" value="Search"/>
+                <input type="submit" name ="submit" value="Search"/><br/>
              
              <?=listProducts()?>
              <?=getDepartments()?>
-             <?=getEmployees()?>
+             <?=getEmployee()?>
 
         </main>
     </body>
