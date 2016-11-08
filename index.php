@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../includes/dbConn.php';
+include '../../includes/dbConnection.php';
 $conn = getDatabaseConnection("bestbuy");
 
 if($conn->connect_error){
@@ -43,7 +43,7 @@ function listProducts() {
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
    
     foreach($products as $product) {
-        echo $prod['productName'] . " - ". $record['type'] .  " - ". $record['price'] . "<br/> ";
+        echo $product['productName'] . " - ". $product['type'] .  " - ". $product['price'] . "<br/> ";
     }
    
     return $products;
@@ -111,7 +111,7 @@ function getEmployee() {
 <!DOCTYPE html>
 <html>
     <head>
-         <style><link rel="stylesheet" href="./css/stylesheet.css" type="text/css"> </style>
+         <link rel="stylesheet" href="./css/stylesheet.css" type="text/css">
         <title>Team Project: Bestbuy Store</title>
         
     </head>
@@ -139,7 +139,7 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
                 
-                <input type="submit" name ="submit" value="Search"/>
+                <input type="submit" name ="submit" value="Search"/><br/>
              
              <?=listProducts()?>
              <?=getDepartments()?>
