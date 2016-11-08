@@ -38,11 +38,11 @@ function listProducts() {
         }
     }
             
-    $statement = $conn->prepare($sql);
-    $statement->execute();
-    $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+     $statement= $conn->prepare($sql); 
+      $statement->execute($namedParameters); //Always pass the named parameters, if any
+      $records = $statement->fetchALL(PDO::FETCH_ASSOC);
    
-    foreach($products as $product) {
+    foreach($records as $product) {
         echo $product['productName'] . " - ". $product['type'] .  " - ". $product['price'] . "<br/> ";
     }
    
@@ -62,7 +62,7 @@ function getDepartments() {
             FROM department
             ORDER BY deptName";
     
-   $statement= $dbConn->prepare($sql); 
+   $statement= $conn->prepare($sql); 
       $statement->execute();
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);
     
@@ -80,7 +80,7 @@ function getProdByDept(){
             JOIN department b ON a.deptId = b.deptId
             ORDER BY deptName";
     
-    $statement= $dbConn->prepare($sql); 
+    $statement= $conn->prepare($sql); 
       $statement->execute();
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);            
 
@@ -97,7 +97,7 @@ function getEmployee() {
     FROM employees e
     LEFT JOIN department d ON e.deptId=d.deptId"; 
     
-    $statement= $dbConn->prepare($sql); 
+    $statement= $conn->prepare($sql); 
       $statement->execute();
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);
     
