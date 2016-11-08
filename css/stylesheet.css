@@ -17,21 +17,19 @@ body {
     
 }
 
-.labels{
-    color:#1a4367;
-    font-family:Tahoma;
-    
-}
 
 table {
-    margin-left:  auto;
-    margin-right: auto;
-    border: 1px solid black;
-            
+    width:70%; 
+    margin-left:15%; 
+    margin-right:15%;
 }
         
 tr, td {
    border: 1px solid black;
    color: black;
-           
+       
+}
+
+div{
+    margin: 0 auto;
 }

@@ -99,7 +99,7 @@ function getEmployee() {
 <!DOCTYPE html>
 <html>
     <head>
-         <link rel="stylesheet" href="./css/stylesheet.css" type="text/css">
+         <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
         <title>Team Project: Bestbuy Store</title>
         
     </head>
@@ -133,8 +133,7 @@ function getEmployee() {
                   <input type="submit" name ="submit" value="Search"/><br/>
 
             </form>
-                     
-                 <?=listProducts()?><p>
+                <div class="container"><?=listProducts()?></div><p>
                  <?=getProdByDept()?><p> <!--is repeating product list-->
                  <?=getEmployee()?>
               
