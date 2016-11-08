@@ -9,11 +9,11 @@ if($conn->connect_error){
 
 function listProducts() {
     global $conn;
-    $sql = "SELECT productName, type, price
+    $sql = "SELECT *
             FROM products";
             
     if (isset($_GET['submit'])){
-            //form has been submitted
+        //if form has been submitted
 
         $namedParameters = array();    
         
@@ -25,7 +25,7 @@ function listProducts() {
                         $namedParameters[':productName'] = $_GET['productName'];
                     }
         
-        if(isset($_GET['inputForm'])) {
+        if(isset($_GET['Submit'])) {
             if($_GET['orderBy'] == "nameASC") {
                 $sql .= " ORDER BY productName ASC";
             } else if($_GET['orderBy'] == "nameDSC") {
@@ -43,7 +43,8 @@ function listProducts() {
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);
    
     foreach($records as $product) {
-        echo $product['productName'] . " - ". $product['type'] .  " - ". $product['price'] . "<br/> ";
+        echo $product
+        ['productName'] . " - ". $product['type'] .  " - ". $product['price'] . "<br/> ";
     }
    
     return $products;
@@ -118,8 +119,12 @@ function getEmployee() {
     <body>
         <main>
             <h1>Welcome to Bestbuy!</h1>
+            
+            
             <form method="POST">
                 
+                <input Type="text" name ="productName" placeholder ="Product Name" >
+                <input type="submit" name ="submit" value="Search"/>
                 <h2><strong>Sort Products By: </strong></h2>
                     <select name="orderBy">
                         <option value="nameASC">Product(A-Z)</option>
@@ -138,12 +143,17 @@ function getEmployee() {
                         <input type="radio" name="filterType" value="games" id="Games"/><label for="Game">Video Games</label>
                         <input type="radio" name="filterType" value="Appliances" id="App"/><label for="App">Appliances</label>
                         <input type="radio" name="filterType" value="health&fit" id="H&F"/><label for="H&F">Health & Fitness</label>
-                    <?=getProdByDept()?>
-                <input type="submit" name ="submit" value="Search"/><br/>
-             
-             <?=listProducts()?>
-             <?=getDepartments()?>
-             <?=getEmployee()?>
+                 <br />
+                  <input type="submit" name ="submit" value="Search"/><br/>
+
+            </form>
+                     
+                 <?=listProducts()?>
+                 <?=getDepartments()?>
+                 <?=getEmployee()?>
+                 <?=getProdByDept()?>
+              
+
 
         </main>
     </body>
