@@ -107,6 +107,10 @@ function getEmployee() {
         <main>
             <h1>Welcome to Bestbuy!</h1>
             
+            <ul class= "nav">
+                <li><a href = "https://trello.com/b/4eWjt4ip/group-project" target ="_blank">Trello</a></li>
+                <li><a href = "https://drive.google.com/a/csumb.edu/file/d/0B81v7LNzvA74NzM2b1MtdVdoMU0/view?usp=sharing" target = "_blank">Mockup and Schema</a></li>
+            </ul>
             
             <form method="POST">
                 

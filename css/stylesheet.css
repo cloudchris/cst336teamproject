@@ -19,15 +19,15 @@ body {
 
 
 table {
-    width:70%; 
-    margin-left:15%; 
-    margin-right:15%;
+    width:30%; 
+    margin-left:35%; 
+    margin-right:35%;
 }
         
 tr, td {
    border: 1px solid black;
    color: black;
-       
+   border-collapse: collapse;    
 }
 
 div{
