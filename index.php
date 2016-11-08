@@ -42,18 +42,17 @@ function listProducts() {
       $statement->execute($namedParameters); //Always pass the named parameters, if any
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);
    
-    echo "<table>";
+    echo "<div><table>";
     foreach($records as $product) {
-        echo $product;
         echo"<tr>";
         echo "<td>" . $product['productName'] . " </td> <td> " . "$" . $product['price'] . "</td> ";
         echo"<tr>";
     }
-    echo"<table>";
-    return $products;
+    echo"</table></div>";
+   // return $products;
     
       
-      echo 'input type="submit" name="loginForm"'; //may need the < > still??
+     // echo 'input type="submit" name="loginForm"'; //may need the < > still??
 }
 
 function getProdByDept(){
@@ -83,9 +82,15 @@ function getEmployee() {
     $statement= $conn->prepare($sql); 
       $statement->execute();
       $records = $statement->fetchALL(PDO::FETCH_ASSOC);
+    echo"<table>";
+    echo"<tr>";
+   foreach($records as $employee) {
+        echo "<td>" . $employee['lastName'] . ", ". $employee['firstName'] .  " </td> <td> ". $employee['deptName'] . "</td> ";
+        echo "</tr>";
+    }
+    echo "</table>";
     
-    print_r($employees);
-    return $employees;
+    return $employee;
 }
 
 ?>
@@ -129,9 +134,9 @@ function getEmployee() {
 
             </form>
                      
-                 <?=listProducts()?>
+                 <?=listProducts()?><p>
+                 <?=getProdByDept()?><p> <!--is repeating product list-->
                  <?=getEmployee()?>
-                 <?=getProdByDept()?>
               
 
 
