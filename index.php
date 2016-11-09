@@ -77,7 +77,7 @@ function listProducts() {
             </button>';
         echo "</a>";
         echo "<br />";
-        echo "<a href='cart.php?productId=".$product['cart']."'>";
+        echo "<a href='cart.php?productId=".$product['productID']."'>";
         echo '<button type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Add to Cart
         </button>';

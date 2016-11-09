@@ -14,14 +14,14 @@ if($conn->connect_error){
         die("Connection to database failed: " . $conn->connect_error);
     }
     
-if(isset($_GET['cart'])){
+if(isset($_GET['prodyuctID'])){
     global $conn;
     foreach($cart as $element){
-        if(!in_array($element, $SESSION['cart'])){
-            $_SESSION['cart'][] = $element;
+        if(!in_array($element, $SESSION['productID'])){
+            $_SESSION['productID'][] = $element;
         }
         echo "<table>";
-        echo"<tr><td>" . $element . "</td></tr>";
+        echo"<tr><td>" . $_SESSION['productID'] . "</td></tr>";
     }
     echo "</table>";
 } 
