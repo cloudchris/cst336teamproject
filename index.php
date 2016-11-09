@@ -1,3 +1,5 @@
+<!--Had to reload a new folder into my workspace because of a Git problem-->
+
 <?php
 session_start();
 include '../../includes/dbConnection.php';
@@ -30,16 +32,16 @@ function listProducts() {
                 $sql .= " AND type = 'Cell Phone'  ";
             } else if($_GET['filterType'] == "Audio") {
                 $sql .= " AND type = 'Audio'";
-            } else if($_GET['filterType'] == "cameras") {
+            } else if($_GET['filterType'] == "camera") {
                 $sql .= " AND type = 'camera'";
             } else if($_GET['filterType'] == "Computers") {
                 $sql .= " AND type = 'Computers'";
-            } else if($_GET['filterType'] == "Mus&Mov") {
+            } else if($_GET['filterType'] == "Mus&Movie") {
                 $sql .= " AND type = 'Mus&Mov'";
             } else if($_GET['filterType'] == "games") {
                 $sql .= " AND type = 'Game'";
             } else if($_GET['filterType'] == "Appliances") {
-                $sql .= " AND type = 'Applicance'";
+                $sql .= " AND type = 'Appliances'";
             } else if($_GET['filterType'] == "health&fit") {
                 $sql .= " AND type = 'health&fit'";
             }
@@ -210,3 +212,4 @@ function getEmployee() {
         </main>
     </body>
 </html>
+
