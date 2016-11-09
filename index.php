@@ -61,15 +61,18 @@ function listProducts() {
      $statement= $conn->prepare($sql);
      $statement->execute($namedParameters); //Always pass the named parameters, if any
      $records = $statement->fetchALL(PDO::FETCH_ASSOC);
+     
+     
    
     
     foreach($records as $product) {
+        $test = $product['productID'];
         echo "<input type='checkbox' name='cart[]'    value =" . $product['productId'] . ">";
         echo $product['productName'] . " " . $product['type'] . " " . "$" . $product['price'];
-        echo "<a href='description.php?productId=".$product['productId']."'>";
-        echo ' <button type="button" class="btn btn-default btn-lg">
+        echo "<a href='description.php?productId=".$test."'>";
+        echo '<button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Description
-            </button> ';
+            </button>';
         echo "</a>";
         echo "<br />";
         echo "[Add to Cart] <br/>";
