@@ -4,29 +4,36 @@
         <h1>Your Cart</h1>
         <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
     </head>
+    <body>
+        <?=cart()?>
+    </body>
 </html>
 
 <?php
-include '../../includes/dbConnection.php';
-$conn = getDatabaseConnection("bestbuy");
-
-if($conn->connect_error){
-        die("Connection to database failed: " . $conn->connect_error);
+function cart(){
+    session_start();
+    if(!isset($_SESSION['cart'])){
+        $_SESSION['cart'] = array(); 
     }
     
-if(isset($_GET['prodyuctID'])){
-    global $conn;
-    foreach($cart as $element){
-        if(!in_array($element, $SESSION['productID'])){
-            $_SESSION['productID'][] = $element;
+    $cart = $_GET['cart'];
+        if(!empty($cart))
+        {
+            foreach($cart as $element )
+            {   
+                if (!in_array($element, $_SESSION['cart'])) { //avoid duplicate device Ids
+                   $_SESSION['cart'][] = $element;
+                } 
+            }
+            
+            foreach($_SESSION['cart'] as $element ) {
+                echo "<p>" . $element . "</p>";
+            }   
         }
-        echo "<table>";
-        echo"<tr><td>" . $_SESSION['productID'] . "</td></tr>";
-    }
-    echo "</table>";
-} 
-
-
+        else{
+            header('Location: index.php');
+            
+        }
+}
 ?>
-
 

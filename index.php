@@ -77,14 +77,14 @@ function listProducts() {
             </button>';
         echo "</a>";
         echo "<br />";
-        echo "<a href='cart.php?productId=".$product['productID']."'>";
-        echo '<button type="button" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Add to Cart
-        </button>';
+        // echo "<a href='cart.php?productId=".$_SESSION['cart']."'>";
+        // echo '<button type="button" class="btn btn-default btn-sm">
+        // <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Add to Cart
+        // </button>';
     }
     
     
-        // echo "<a href='cart.php?userId=".$product['cart']."'>";
+        // echo "<a href='cart.php?productId=".$_SESSION['productID']."'>";
         // echo '<button type="button" class="btn btn-default btn-lg">
         // <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Add to Cart
         // </button>';
@@ -209,7 +209,10 @@ function getEmployee() {
                 <!-- <input type="submit" name ="submit" value="Search"/><br/> -->
 
             </form>
-                <div class="container"><?=listProducts()?></div><p>
+            <form method="GET" action="cart.php" class="continue">
+                <div class="container"><?=listProducts()?></div>
+                <input type="submit" name="submit" value="Add to Cart">
+            </form>
                  <?=getProdByDept()?><p> <!--is repeating product list-->
                  <?=getEmployee()?>
 
