@@ -1,36 +1,32 @@
-<?php
-session_start();
-
- if (!isset($_SESSION['cart'])) {
-     $_SESSION['cart'] = array();  //initializing session variable
-  }
-  
-    $cart = $_GET['cart'];
-    foreach($cart as $element )
-    {   
-        if (!in_array($element, $SESSION['cart'])) { //avoid duplicate device Ids
-       $_SESSION['cart'][] = $element;
-        }
-        //    echo $element . "<br/>";
-    }
-
-    echo "Your items: <br/>";
-    
-    foreach($_SESSION['cart'] as $element ) {
-        echo $element . "<br/>";
-    }
-
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Your Cart</title>
-        <link rel="stylesheet" href="./css/stylesheet.css" type="text/css"> 
+        <h1>Your Cart</h1>
+        <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
     </head>
-
-<br />
-<form>
-<input type="submit" value="Check Out" />
-</form>
 </html>
+
+<?php
+include '../../includes/dbConnection.php';
+$conn = getDatabaseConnection("bestbuy");
+
+if($conn->connect_error){
+        die("Connection to database failed: " . $conn->connect_error);
+    }
+    
+if(isset($_GET['cart'])){
+    global $conn;
+    foreach($cart as $element){
+        if(!in_array($element, $SESSION['cart'])){
+            $_SESSION['cart'][] = $element;
+        }
+        echo "<table>";
+        echo"<tr><td>" . $element . "</td></tr>";
+    }
+    echo "</table>";
+} 
+
+
+?>
+
+
