@@ -72,7 +72,7 @@ function listProducts() {
             </button> ';
         echo "</a>";
         echo "<br />";
-        echo "[Add to Cart] <br/>";
+        echo "[<a href='cart.php?userId=".$product['userId']."'>Add to Cart!</a>]";
        
     }
 }
