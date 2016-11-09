@@ -75,7 +75,7 @@ function listProducts() {
             </button>';
         echo "</a>";
         echo "<br />";
-        echo "[Add to Cart] <br/>";
+        echo "[<a href='cart.php?userId=".$product['cart']."'>Add to Cart!</a>]";
        
     }
 }
