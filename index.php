@@ -75,7 +75,10 @@ function listProducts() {
             </button>';
         echo "</a>";
         echo "<br />";
-        echo "[<a href='cart.php?userId=".$product['cart']."'>Add to Cart!</a>]";
+        // echo "<a href='cart.php?userId=".$product['cart']."'>Add to Cart!</a>";
+        // echo '<button type="button" class="btn btn-default btn-lg">
+        // <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Add to Cart
+        // </button>';
        
     }
 }

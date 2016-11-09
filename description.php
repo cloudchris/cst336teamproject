@@ -1,3 +1,14 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <h1>Product Description</h1>
+        <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+    </head>
+    <body>
+    </body>
+</html>
+
+
 <?php
 include '../../includes/dbConnection.php';
 $conn = getDatabaseConnection("bestbuy");
@@ -18,13 +29,11 @@ if(isset($_GET['productId'])){
         $statement->execute($namedParameters);
         $record = $statement->fetch(PDO::FETCH_ASSOC);
       
-      
-    echo $record['productName'] . " " . $record['Description'];
+    echo"<table>";
+    echo "<tr><td>" . $record['productName'] . "</td> <td>" . $record['Description']. "</td></tr>";
       
 } 
 
 
-
-
-
 ?>
+
